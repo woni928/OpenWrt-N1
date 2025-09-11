@@ -106,14 +106,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    - name: 检查并修正.config架构参数
-      run: |
-        cd openwrt
-        sed -i 's/-march=armv8-a+crypto/-march=armv8-a/g' .config
-        make defconfig
-        grep TARGET .config
-        ls build_dir/toolchain-*
-
     - name: 下载软件包
       run: |
         cd openwrt
