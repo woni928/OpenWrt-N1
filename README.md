@@ -9,7 +9,7 @@
 - 23.05
 - ![23 05](https://github.com/user-attachments/assets/6bd19f16-42b7-40ce-a293-0c4d755d59d9)
 
-- - 24.10
+- 24.10
 - ![24 10](https://github.com/user-attachments/assets/aa090797-c426-4629-8590-7584a433ea40)
 
 ## 感谢 ❤️ 以下大佬。
