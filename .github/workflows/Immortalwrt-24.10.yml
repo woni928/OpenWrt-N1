@@ -44,7 +44,7 @@ jobs:
         remove-docker-images: 'true'
 
     - name: 检查Actions
-      uses: actions/checkout@v4.2
+      uses: actions/checkout@v4.2.0
 
     - name: 检查服务器配置
       run: |
