@@ -16,11 +16,13 @@ env:
   DIY_P2_SH: N1/Immortalwrt/diy-part2.sh
   FILES: N1/Immortalwrt/files
   TZ: Asia/Shanghai
-  GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
 jobs:
   build:
     runs-on: ubuntu-24.04
+    permissions:
+      actions: write
+      contents: write
 
     steps:
     - name: 创建编译空间挂载点
@@ -74,7 +76,6 @@ jobs:
         echo "硬盘详情："
         df -Th
 
-
     - name: 克隆源码
       working-directory: /workdir
       run: |
@@ -84,7 +85,7 @@ jobs:
         cd openwrt
         useVersionInfo=$(git show -s --date=short --format="date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
-        echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+        echo "DATE=$(date \"+%Y-%m-%d %H:%M:%S\")" >> $GITHUB_ENV
         echo "tag_name=$(date +%Y%m%d)" >> $GITHUB_ENV
 
     - name: 加载DIY_P1
@@ -167,7 +168,6 @@ jobs:
     - name: 整理文件
       run: mv /opt/openwrt_packit/output/* /workdir/upload/
       
-
     - name: 发布固件
       uses: ncipollo/release-action@v1
       with:
@@ -194,7 +194,7 @@ jobs:
       with:
         retain_days: 3
         keep_minimum_runs: 5
-        token: ${{ env.GITHUB_TOKEN }}		
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 删除自动发布的旧固件
       uses: dev-drprasad/delete-older-releases@master
@@ -202,4 +202,3 @@ jobs:
       with:
         keep_latest: 7
         delete_tags : true
-        
