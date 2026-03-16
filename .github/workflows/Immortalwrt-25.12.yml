@@ -11,7 +11,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-25.12
   FEEDS_CONF: N1/Immortalwrt/25.12-TL-feeds.conf.default
-  CONFIG_FILE: N1/Immortalwrt/2025-0922.config
+  CONFIG_FILE: N1/Immortalwrt/25.12-2025-0922.config
   DIY_P1_SH: N1/Immortalwrt/diy-part1.sh
   DIY_P2_SH: N1/Immortalwrt/diy-part3.sh
   FILES: N1/Immortalwrt/files
@@ -23,6 +23,11 @@ jobs:
     permissions:
       actions: write
       contents: write
+
+    env:
+      DATE: "dummy"        # 给编辑器看的默认值，运行时会被后面 echo 覆盖
+      tag_name: "dummy"    # 同上
+      UPLOAD_RELEASE: 'true'   # 或 'false'，是否删除旧的固件
 
     steps:
     - name: 创建编译空间挂载点
@@ -187,7 +192,7 @@ jobs:
               密码：password
 
               更新日志：
-              2026-0315：本固件所含插件，请看主页图片-25.12。
+              2026-0316：本固件所含插件，请看主页图片-25.12。
 
     - name: 删除运行记录
       uses: Mattraks/delete-workflow-runs@main
