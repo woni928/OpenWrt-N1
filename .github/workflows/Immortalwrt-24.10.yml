@@ -23,6 +23,10 @@ jobs:
     permissions:
       actions: write
       contents: write
+    env:
+      DATE: "dummy"        # 给编辑器看的默认值，运行时会被后面 echo 覆盖
+      tag_name: "dummy"    # 同上
+      UPLOAD_RELEASE: 'true'   # 或 'false'，是否删除旧的固件
 
     steps:
     - name: 创建编译空间挂载点
@@ -187,7 +191,7 @@ jobs:
               密码：password
 
               更新日志：
-              2026-0315：本固件所含插件，请看主页图片-。
+              2026-0317：本固件所含插件，请看主页图片.
 
     - name: 删除运行记录
       uses: Mattraks/delete-workflow-runs@main
