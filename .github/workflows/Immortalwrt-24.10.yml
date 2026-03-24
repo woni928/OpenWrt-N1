@@ -42,7 +42,7 @@ jobs:
         remove-docker-images: 'true'
 
     - name: 检查Actions
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: 检查服务器配置
       run: |
@@ -188,6 +188,7 @@ jobs:
 
               更新日志：
               2025-0928：本固件所含插件，请看主页图片。
+              2026-0324：同步上游的更新。
 
     - name: 删除运行记录
       uses: Mattraks/delete-workflow-runs@main
